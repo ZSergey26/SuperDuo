@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import it.jaschke.alexandria.api.Callback;
 
@@ -182,6 +183,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             finish();
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+            // handle scan result
+            String ISBN = scanResult.getContents();
+            FragmentManager fm = getSupportFragmentManager();
+            AddBook addBookFragment = (AddBook)fm.findFragmentById(R.id.container);
+            addBookFragment.setISBNToEditText(ISBN);
+        }
     }
 
 
