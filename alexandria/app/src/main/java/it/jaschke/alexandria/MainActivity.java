@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 import it.jaschke.alexandria.api.Callback;
 
 
@@ -149,6 +151,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 .addToBackStack("Book Detail")
                 .commit();
 
+    }
+
+    public void startISBNBarcodeScanner() {
+        new IntentIntegrator(this).initiateScan();
     }
 
     private class MessageReciever extends BroadcastReceiver {
