@@ -17,26 +17,37 @@ public class TodayGamesWidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
-
-        String formattedMaxTemperature = "Manchester United TOP!";
-        int weatherArtResourceId = R.drawable.manchester_united;
-
         // Perform this loop procedure for each Today widget
         for (int appWidgetId : appWidgetIds) {
             int layoutId = R.layout.today_games_widget;
             RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
 
 
-            views.setTextViewText(R.id.widget_high_temperature, formattedMaxTemperature);
-            views.setImageViewResource(R.id.widget_icon, weatherArtResourceId);
-
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, 0);
             views.setOnClickPendingIntent(R.id.widget, pendingIntent);
 
-            // Tell the AppWidgetManager to perform an update on the current app widget
+
+            // Set data
+            setRemoteAdapter(context, views);
+
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
+
+    private void setRemoteAdapter(Context context, final RemoteViews views) {
+        views.setRemoteAdapter(R.id.widget_list,
+                new Intent(context, TodayGamesWidgetService.class));
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+//        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+//        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
+//                new ComponentName(context, getClass()));
+//        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list);
+    }
+
+
 }
