@@ -21,17 +21,20 @@ public class TodayGamesWidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             int layoutId = R.layout.today_games_widget;
             RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
+            views.setImageViewResource(R.id.imageView, R.drawable.west_ham);
 
 
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, 0);
-            views.setOnClickPendingIntent(R.id.widget, pendingIntent);
+            views.setOnClickPendingIntent(R.id.imageView, pendingIntent);
+
 
 
             // Set data
-            setRemoteAdapter(context, views);
+            //setRemoteAdapter(context, views);
 
+            // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
