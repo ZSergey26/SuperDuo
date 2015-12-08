@@ -28,6 +28,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/widget_list"
             android:layout_gravity="center_horizontal"
-            tools:listitem="@layout/scores_list_item"/>
+            tools:listitem="@layout/widget_scores_list_item"/>
     </LinearLayout>
 </FrameLayout>

@@ -62,7 +62,7 @@ public class TodayGamesWidgetService extends RemoteViewsService {
                 final long identityToken = Binder.clearCallingIdentity();
 
 
-                Uri scoresUri = DatabaseContract.scores_table.buildScoreWithDate();
+                Uri scoresUri = DatabaseContract.BASE_CONTENT_URI;
                 data = getContentResolver().query(scoresUri,
                         SCORES_COLUMNS,
                         null,
@@ -93,27 +93,10 @@ public class TodayGamesWidgetService extends RemoteViewsService {
                 }
 
                 RemoteViews views = new RemoteViews(getPackageName(),
-                        R.layout.scores_list_item);
+                        R.layout.widget_scores_list_item);
 
-
-
-
-
-//                date.setText(cursor.getString(COL_MATCHTIME));
-//                date.setContentDescription("Match time " + cursor.getString(COL_MATCHTIME));
-//
-//                score.setText(Utilies.getScores(cursor.getInt(COL_HOME_GOALS), cursor.getInt(COL_AWAY_GOALS)));
-//                score.setContentDescription("Score " + Utilies.getScores(cursor.getInt(COL_HOME_GOALS), cursor.getInt(COL_AWAY_GOALS)));
-//
-//                match_id = cursor.getDouble(COL_ID);
-//                home_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-//                        cursor.getString(COL_HOME)));
-//                away_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-//                        cursor.getString(COL_AWAY)
-//                ));
-                Log.e("SLSBA SUKA SLABA  " + data.getString(COL_HOME), "KAKEL");
-                views.setTextViewText(R.id.home_name, data.getString(COL_HOME));
-                views.setTextViewText(R.id.away_name, data.getString(COL_AWAY));
+                views.setTextViewText(R.id.widget_home_name, data.getString(COL_HOME));
+                views.setTextViewText(R.id.widget_away_name, data.getString(COL_AWAY));
                 final Intent fillInIntent = new Intent();
                 //iews.setOnClickFillInIntent(R.id.wif, fillInIntent);
 

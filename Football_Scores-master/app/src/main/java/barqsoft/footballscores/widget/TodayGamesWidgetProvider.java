@@ -3,6 +3,7 @@ package barqsoft.footballscores.widget;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
@@ -23,16 +24,13 @@ public class TodayGamesWidgetProvider extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
             views.setImageViewResource(R.id.imageView, R.drawable.west_ham);
 
-
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, 0);
-            views.setOnClickPendingIntent(R.id.imageView, pendingIntent);
-
-
+            views.setOnClickPendingIntent(R.id.widget, pendingIntent);
 
             // Set data
-            //setRemoteAdapter(context, views);
+            setRemoteAdapter(context, views);
 
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -46,10 +44,10 @@ public class TodayGamesWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-//        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-//        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
-//                new ComponentName(context, getClass()));
-//        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list);
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
+                new ComponentName(context, getClass()));
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list);
     }
 
 

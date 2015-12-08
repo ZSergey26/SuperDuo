@@ -1,11 +1,15 @@
 package barqsoft.footballscores;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -14,6 +18,21 @@ public class MainActivity extends ActionBarActivity
     public static String LOG_TAG = "MainActivity";
     private final String save_tag = "Save Test";
     private PagerFragment my_main;
+
+    private static final String[] SCORES_COLUMNS = {
+            DatabaseContract.SCORES_TABLE + "." +
+                    DatabaseContract.scores_table._ID,
+            DatabaseContract.scores_table.DATE_COL,
+            DatabaseContract.scores_table.TIME_COL,
+            DatabaseContract.scores_table.HOME_COL,
+            DatabaseContract.scores_table.AWAY_COL,
+            DatabaseContract.scores_table.LEAGUE_COL,
+            DatabaseContract.scores_table.HOME_GOALS_COL,
+            DatabaseContract.scores_table.AWAY_GOALS_COL,
+            DatabaseContract.scores_table.MATCH_ID,
+            DatabaseContract.scores_table.MATCH_DAY
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +44,8 @@ public class MainActivity extends ActionBarActivity
                     .add(R.id.container, my_main)
                     .commit();
         }
+
+
     }
 
 
@@ -75,5 +96,33 @@ public class MainActivity extends ActionBarActivity
         selected_match_id = savedInstanceState.getInt("Selected_match");
         my_main = (PagerFragment) getSupportFragmentManager().getFragment(savedInstanceState,"my_main");
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*Uri scoresUri = DatabaseContract.BASE_CONTENT_URI;
+
+        Cursor data = getContentResolver().query(scoresUri,
+                SCORES_COLUMNS,
+                null,
+                null,
+                DatabaseContract.scores_table.DATE_COL + " ASC");
+
+        if (data == null) {
+            ArrayList ar = new ArrayList();
+            return;
+        }
+        if (!data.moveToFirst()) {
+            data.close();
+            return;
+        }
+
+        if (data.getCount() < 1) {
+            Log.e("MAT", "KEK");
+        }
+
+        String strung  = data.getString(3);
+        data.close();*/
     }
 }

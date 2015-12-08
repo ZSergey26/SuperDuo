@@ -3,4 +3,4 @@
     android:initialLayout="@layout/today_games_widget"
     android:minHeight="@dimen/widget_today_default_height"
     android:minWidth="@dimen/widget_today_default_width"
-    android:updatePeriodMillis="1000" />
+    android:updatePeriodMillis="100000" />
