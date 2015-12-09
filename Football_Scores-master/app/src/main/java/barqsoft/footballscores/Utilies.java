@@ -10,16 +10,27 @@ public class Utilies
     public static final int CHAMPIONS_LEAGUE = 362;
     public static final int PRIMERA_DIVISION = 358;
     public static final int BUNDESLIGA = 351;
-    public static String getLeague(int league_num)
+
+
+    public static final int SERIE_A_STRING_ID = R.string.seriaa;
+    public static final int PREMIER_LEGAUE_STRING_ID = R.string.premierleague;
+    public static final int CHAMPIONS_LEAGUE_STRING_ID = R.string.champions_league;
+    public static final int PRIMERA_DIVISION_STRING_ID = R.string.primeradivison;
+    public static final int BUNDESLIGA_STRING_ID = R.string.bundesliga;
+    public static final int UNKNOWN_LEAGUE_STRING_ID = R.string.unknown_league;
+
+
+
+    public static int getLeague(int league_num)
     {
         switch (league_num)
         {
-            case SERIE_A : return "Seria A";
-            case PREMIER_LEGAUE : return "Premier League";
-            case CHAMPIONS_LEAGUE : return "UEFA Champions League";
-            case PRIMERA_DIVISION : return "Primera Division";
-            case BUNDESLIGA : return "Bundesliga";
-            default: return "Not known League Please report";
+            case SERIE_A : return SERIE_A_STRING_ID;
+            case PREMIER_LEGAUE : return PREMIER_LEGAUE_STRING_ID;
+            case CHAMPIONS_LEAGUE : return CHAMPIONS_LEAGUE_STRING_ID;
+            case PRIMERA_DIVISION : return PRIMERA_DIVISION_STRING_ID;
+            case BUNDESLIGA : return BUNDESLIGA_STRING_ID;
+            default: return UNKNOWN_LEAGUE_STRING_ID;
         }
     }
     public static String getMatchDay(int match_day,int league_num)
