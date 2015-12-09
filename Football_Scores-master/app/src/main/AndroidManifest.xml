@@ -32,6 +32,7 @@
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_today" />
         </receiver>
+        <service android:name=".widget.WidgetService" />
         <!-- Widget -->
 
 
