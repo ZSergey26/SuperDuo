@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:elevation="4dp"
-    android:background="@drawable/list_item"
-    >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin">
+
     <LinearLayout
-        android:orientation="horizontal" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        >
+        android:id="@+id/widget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/touch_selector_white"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <!--  Last score -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -24,10 +28,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textSize="@dimen/TeamNames"
                 android:gravity="center"
                 android:text="@string/test_text"
-                android:id="@+id/widget_home_name"
-                android:textColor="#000000" />
+                android:id="@+id/widget_home_name"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -41,8 +45,8 @@
                 android:text="@string/test_text"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:id="@+id/widget_score_textview"
-                android:textColor="#000000"/>
+                android:textSize="@dimen/Score"
+                android:id="@+id/widget_score_textview"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -50,8 +54,7 @@
                 android:text="@string/test_text"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:id="@+id/widget_data_textview"
-                android:textColor="#000000"/>
+                android:id="@+id/widget_data_textview"/>
 
         </LinearLayout>
         <LinearLayout
@@ -70,10 +73,10 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/test_text"
-                android:id="@+id/widget_away_name"
-                android:textColor="#000000"/>
+                android:textSize="@dimen/TeamNames"
+                android:id="@+id/widget_away_name"/>
         </LinearLayout>
+        <!--  Last score -->
+
     </LinearLayout>
-</LinearLayout>
-
-
+</FrameLayout>
